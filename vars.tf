@@ -1,6 +1,10 @@
 variable "role_name" {
   type        = string
   description = "(Required) Name of the iam role you are provisioning"
+  validation {
+    condition     = length(var.role_name) <= 64
+    error_message = "Role name must be less than 64 characters"
+  }
 }
 
 variable "tags" {
